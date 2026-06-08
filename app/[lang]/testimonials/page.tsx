@@ -5,6 +5,7 @@ import { getApprovedTestimonials } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { TestimonialCard } from "@/components/sections/TestimonialCard";
+import { TestimonialForm } from "@/components/forms/TestimonialForm";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/testimonials">): Promise<Metadata> {
   const { lang } = await params;
@@ -32,6 +33,15 @@ export default async function TestimonialsPage({ params }: PageProps<"/[lang]/te
       ) : (
         <p className="mt-16 text-center text-ink/50">{dict.testimonials.empty}</p>
       )}
+
+      <div className="mx-auto mt-24 max-w-2xl">
+        <SectionHeading title={dict.testimonials.share} />
+        <Reveal delay={0.05}>
+          <div className="mt-8">
+            <TestimonialForm lang={lang as Locale} dict={dict} />
+          </div>
+        </Reveal>
+      </div>
     </div>
   );
 }

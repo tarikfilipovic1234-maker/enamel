@@ -10,6 +10,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Splash } from "@/components/site/Splash";
 import { ViewTransition } from "@/components/ui/ViewTransition";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -35,6 +36,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
+  openGraph: {
+    type: "website",
+    siteName: "Enamel",
+    title: "Enamel — Stomatološka poliklinika Sarajevo",
+    description: "Vrhunska stomatološka njega u Sarajevu.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export function generateStaticParams() {
@@ -58,6 +66,7 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col">
         <AuroraBackground />
+        <JsonLd dict={dict} />
         <Splash tagline={dict.splash.tagline} />
         <Header lang={lang as Locale} nav={nav} bookLabel={dict.nav.book} />
         <ViewTransition
