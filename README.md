@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Enamel — Dental Clinic (Sarajevo)
 
-## Getting Started
+Premium, bilingual (🇧🇦 Bosnian / 🇬🇧 English) full-stack website for the Enamel dental clinic: marketing site, online appointment requests, and a secure staff admin dashboard.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js 16** (App Router, Server Components, Server Actions, View Transitions)
+- **React 19**, **Tailwind CSS v4**, **Framer Motion**
+- **Neon Postgres** + **Prisma 7** (Neon driver adapter)
+- **Neon Auth** (Stack Auth) — staff/admin only
+- **Resend** — transactional email
+- Deploy target: **Vercel**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Splash animation, aurora/glass design system, directional + shared-element page transitions
+- Bilingual routing under `/[lang]` (`bs` default) with server-only dictionaries
+- Pages: Home, About, Services (+ detail), Team, Appointment booking, Contact, Testimonials, Blog
+- Appointment system: availability engine (working hours − time off − approved bookings), Zod validation, transactional overlap guard, email confirmations
+- Admin: appointments (approve/reject/reschedule), services CRUD, dentists + working-hours/time-off, testimonial moderation, blog CMS, contact inquiries
+- SEO: localized `sitemap.xml`, `robots.txt`, Dentist JSON-LD, OpenGraph
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Getting started
 
-## Learn More
+1. **Install**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Environment** — copy `.env.example` to `.env` and fill in real values:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   - `DATABASE_URL` (Neon **pooled** `-pooler` host) and `DIRECT_URL` (direct host)
+   - `NEXT_PUBLIC_STACK_PROJECT_ID` (UUID), `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY`, `STACK_SECRET_SERVER_KEY` (from Neon Auth)
+   - `RESEND_API_KEY`, `EMAIL_FROM`, `CONTACT_TO_EMAIL`
+   - `ADMIN_EMAILS` (comma-separated allowlist for dashboard access)
+   - `NEXT_PUBLIC_SITE_URL`
 
-## Deploy on Vercel
+3. **Database**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run db:migrate     # create tables (prisma migrate dev)
+   npm run db:seed        # sample services, dentists, hours, testimonials, post
+   # optional hard anti-double-booking guard:
+   #   psql "$DIRECT_URL" -f prisma/sql/001_appointment_overlap_exclusion.sql
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Run**
+
+   ```bash
+   npm run dev            # http://localhost:3000  (redirects to /bs)
+   ```
+
+   Admin dashboard: `/admin` (sign in via Neon Auth; your email must be in `ADMIN_EMAILS`).
+
+## Scripts
+
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` / `build` / `start` | Next.js dev / build / serve |
+| `npm run db:migrate` | Apply Prisma migrations (dev) |
+| `npm run db:deploy` | Apply migrations (prod/CI) |
+| `npm run db:seed` | Seed sample data |
+| `npm run db:studio` | Prisma Studio |
+
+## Notes
+
+- Connection URLs live in `prisma.config.ts` (Prisma 7); the runtime client uses the Neon WebSocket adapter in `lib/prisma.ts`.
+- Public pages degrade gracefully (empty states) when the DB is unreachable.
+- `AGENTS.md` directs AI agents to the version-matched Next.js docs in `node_modules/next/dist/docs/`.
