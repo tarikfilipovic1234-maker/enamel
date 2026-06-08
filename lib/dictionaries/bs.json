@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "Početna",
+    "about": "O nama",
+    "services": "Usluge",
+    "team": "Tim",
+    "testimonials": "Recenzije",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "book": "Zakažite termin"
+  },
+  "common": {
+    "bookNow": "Zakažite termin",
+    "learnMore": "Saznajte više",
+    "readMore": "Pročitajte više",
+    "viewAll": "Pogledaj sve",
+    "send": "Pošalji",
+    "sending": "Slanje...",
+    "loading": "Učitavanje...",
+    "from": "od",
+    "minutes": "min",
+    "required": "obavezno"
+  },
+  "splash": {
+    "tagline": "Vaš osmijeh, naša strast"
+  },
+  "home": {
+    "heroBadge": "Stomatološka poliklinika u Sarajevu",
+    "heroTitle": "Vrhunska stomatologija za savršen osmijeh",
+    "heroSubtitle": "Spoj moderne tehnologije, stručnosti i topline. Pružamo brigu o vašem osmijehu na najvišem nivou.",
+    "heroCtaPrimary": "Zakažite termin",
+    "heroCtaSecondary": "Naše usluge",
+    "statsPatients": "Zadovoljnih pacijenata",
+    "statsExperience": "Godina iskustva",
+    "statsServices": "Stomatoloških usluga",
+    "servicesTitle": "Naše usluge",
+    "servicesSubtitle": "Kompletna stomatološka njega na jednom mjestu",
+    "whyTitle": "Zašto Enamel",
+    "whySubtitle": "Posvećeni smo vašem udobnom i bezbolnom iskustvu",
+    "why1Title": "Moderna tehnologija",
+    "why1Text": "Najsavremenija oprema za precizne i bezbolne tretmane.",
+    "why2Title": "Iskusni stručnjaci",
+    "why2Text": "Tim certificiranih stomatologa sa godinama prakse.",
+    "why3Title": "Individualni pristup",
+    "why3Text": "Svaki plan terapije prilagođen je upravo vama.",
+    "why4Title": "Ugodna atmosfera",
+    "why4Text": "Opuštajući ambijent koji uklanja strah od stomatologa.",
+    "ctaTitle": "Spremni za novi osmijeh?",
+    "ctaText": "Zakažite besplatni konsultativni pregled već danas.",
+    "teamTitle": "Upoznajte naš tim",
+    "teamSubtitle": "Stručnjaci kojima možete vjerovati"
+  },
+  "about": {
+    "title": "O poliklinici Enamel",
+    "subtitle": "Posvećeni zdravlju i ljepoti vašeg osmijeha",
+    "intro": "Enamel je moderna stomatološka poliklinika u srcu Sarajeva, osnovana s ciljem da pruži vrhunsku stomatološku njegu u ugodnom i sigurnom okruženju.",
+    "missionTitle": "Naša misija",
+    "missionText": "Vjerujemo da svako zaslužuje zdrav i samouvjeren osmijeh. Kombinujemo najsavremeniju tehnologiju sa pažljivim, individualnim pristupom svakom pacijentu.",
+    "valuesTitle": "Naše vrijednosti",
+    "value1": "Povjerenje i transparentnost",
+    "value2": "Stalno usavršavanje",
+    "value3": "Bezbolni tretmani",
+    "value4": "Najviši higijenski standardi"
+  },
+  "services": {
+    "title": "Naše usluge",
+    "subtitle": "Kompletna stomatološka njega prilagođena vašim potrebama",
+    "detailDuration": "Trajanje tretmana",
+    "detailPrice": "Cijena",
+    "priceOnRequest": "Na upit",
+    "bookThis": "Zakažite ovu uslugu",
+    "empty": "Usluge će uskoro biti dostupne."
+  },
+  "team": {
+    "title": "Naš tim",
+    "subtitle": "Iskusni stomatolozi posvećeni vašem osmijehu",
+    "specialties": "Specijalnosti",
+    "empty": "Profili tima će uskoro biti dostupni."
+  },
+  "appointment": {
+    "title": "Zakažite termin",
+    "subtitle": "Odaberite uslugu i termin koji vam odgovara",
+    "service": "Usluga",
+    "dentist": "Stomatolog",
+    "anyDentist": "Bez preferencije",
+    "date": "Datum",
+    "time": "Vrijeme",
+    "name": "Ime i prezime",
+    "email": "Email adresa",
+    "phone": "Broj telefona",
+    "notes": "Napomena (opcionalno)",
+    "selectService": "Odaberite uslugu",
+    "selectDate": "Odaberite datum",
+    "noSlots": "Nema slobodnih termina za odabrani datum. Pokušajte drugi datum.",
+    "loadingSlots": "Učitavanje termina...",
+    "submit": "Pošaljite zahtjev",
+    "submitting": "Slanje zahtjeva...",
+    "successTitle": "Zahtjev poslan!",
+    "successText": "Vaš zahtjev za termin je uspješno zaprimljen. Kontaktirat ćemo vas radi potvrde.",
+    "errorGeneric": "Došlo je do greške. Molimo pokušajte ponovo."
+  },
+  "contact": {
+    "title": "Kontaktirajte nas",
+    "subtitle": "Tu smo za sva vaša pitanja",
+    "name": "Ime i prezime",
+    "email": "Email adresa",
+    "phone": "Telefon (opcionalno)",
+    "subject": "Naslov",
+    "message": "Poruka",
+    "submit": "Pošaljite poruku",
+    "submitting": "Slanje...",
+    "successTitle": "Poruka poslana!",
+    "successText": "Hvala na vašoj poruci. Odgovorit ćemo u najkraćem roku.",
+    "errorGeneric": "Slanje nije uspjelo. Molimo pokušajte ponovo.",
+    "infoTitle": "Informacije",
+    "address": "Adresa",
+    "addressValue": "Ferhadija 1, 71000 Sarajevo",
+    "phoneLabel": "Telefon",
+    "phoneValue": "+387 33 123 456",
+    "emailLabel": "Email",
+    "emailValue": "info@enamel.ba",
+    "hours": "Radno vrijeme",
+    "hoursValue": "Pon – Pet: 09:00 – 19:00, Sub: 09:00 – 14:00"
+  },
+  "testimonials": {
+    "title": "Šta kažu naši pacijenti",
+    "subtitle": "Vaše povjerenje je naša najveća nagrada",
+    "empty": "Recenzije će uskoro biti dostupne."
+  },
+  "blog": {
+    "title": "Blog i edukacija",
+    "subtitle": "Savjeti i novosti za zdravlje vaših zuba",
+    "empty": "Članci će uskoro biti dostupni.",
+    "backToBlog": "Nazad na blog",
+    "published": "Objavljeno"
+  },
+  "footer": {
+    "tagline": "Vrhunska stomatološka njega u Sarajevu.",
+    "quickLinks": "Brzi linkovi",
+    "contact": "Kontakt",
+    "rights": "Sva prava zadržana.",
+    "hours": "Radno vrijeme"
+  },
+  "validation": {
+    "nameRequired": "Ime je obavezno",
+    "emailInvalid": "Unesite ispravnu email adresu",
+    "phoneRequired": "Broj telefona je obavezan",
+    "messageRequired": "Poruka je obavezna",
+    "slotTaken": "Odabrani termin više nije dostupan. Molimo odaberite drugi."
+  }
+}
