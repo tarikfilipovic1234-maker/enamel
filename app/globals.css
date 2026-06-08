@@ -43,8 +43,8 @@
   --color-ink: #0a2c46;
   --color-mist: #f5fbfc;
 
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display), var(--font-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), var(--font-manrope), Georgia, serif;
 
   --radius-card: 1.5rem;
 
