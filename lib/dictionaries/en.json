@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "team": "Team",
+    "testimonials": "Reviews",
+    "blog": "Blog",
+    "contact": "Contact",
+    "book": "Book appointment"
+  },
+  "common": {
+    "bookNow": "Book appointment",
+    "learnMore": "Learn more",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "send": "Send",
+    "sending": "Sending...",
+    "loading": "Loading...",
+    "from": "from",
+    "minutes": "min",
+    "required": "required"
+  },
+  "splash": {
+    "tagline": "Your smile, our passion"
+  },
+  "home": {
+    "heroBadge": "Dental clinic in Sarajevo",
+    "heroTitle": "Premium dentistry for a perfect smile",
+    "heroSubtitle": "A blend of modern technology, expertise and warmth. We care for your smile at the highest level.",
+    "heroCtaPrimary": "Book appointment",
+    "heroCtaSecondary": "Our services",
+    "statsPatients": "Happy patients",
+    "statsExperience": "Years of experience",
+    "statsServices": "Dental services",
+    "servicesTitle": "Our services",
+    "servicesSubtitle": "Complete dental care in one place",
+    "whyTitle": "Why Enamel",
+    "whySubtitle": "Dedicated to your comfortable and pain-free experience",
+    "why1Title": "Modern technology",
+    "why1Text": "State-of-the-art equipment for precise, pain-free treatments.",
+    "why2Title": "Experienced experts",
+    "why2Text": "A team of certified dentists with years of practice.",
+    "why3Title": "Personal approach",
+    "why3Text": "Every treatment plan is tailored just for you.",
+    "why4Title": "Comfortable atmosphere",
+    "why4Text": "A relaxing ambiance that takes the fear out of the dentist.",
+    "ctaTitle": "Ready for a new smile?",
+    "ctaText": "Book your free consultation today.",
+    "teamTitle": "Meet our team",
+    "teamSubtitle": "Experts you can trust"
+  },
+  "about": {
+    "title": "About Enamel clinic",
+    "subtitle": "Dedicated to the health and beauty of your smile",
+    "intro": "Enamel is a modern dental clinic in the heart of Sarajevo, founded to deliver premium dental care in a comfortable and safe environment.",
+    "missionTitle": "Our mission",
+    "missionText": "We believe everyone deserves a healthy, confident smile. We combine cutting-edge technology with a careful, individual approach to every patient.",
+    "valuesTitle": "Our values",
+    "value1": "Trust and transparency",
+    "value2": "Continuous improvement",
+    "value3": "Pain-free treatments",
+    "value4": "Highest hygiene standards"
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "Complete dental care tailored to your needs",
+    "detailDuration": "Treatment duration",
+    "detailPrice": "Price",
+    "priceOnRequest": "On request",
+    "bookThis": "Book this service",
+    "empty": "Services will be available soon."
+  },
+  "team": {
+    "title": "Our team",
+    "subtitle": "Experienced dentists dedicated to your smile",
+    "specialties": "Specialties",
+    "empty": "Team profiles will be available soon."
+  },
+  "appointment": {
+    "title": "Book an appointment",
+    "subtitle": "Choose a service and a time that suits you",
+    "service": "Service",
+    "dentist": "Dentist",
+    "anyDentist": "No preference",
+    "date": "Date",
+    "time": "Time",
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "notes": "Note (optional)",
+    "selectService": "Select a service",
+    "selectDate": "Select a date",
+    "noSlots": "No available slots for the selected date. Please try another date.",
+    "loadingSlots": "Loading slots...",
+    "submit": "Send request",
+    "submitting": "Sending request...",
+    "successTitle": "Request sent!",
+    "successText": "Your appointment request has been received. We will contact you to confirm.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "We're here for all your questions",
+    "name": "Full name",
+    "email": "Email address",
+    "phone": "Phone (optional)",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "successTitle": "Message sent!",
+    "successText": "Thank you for your message. We'll reply as soon as possible.",
+    "errorGeneric": "Sending failed. Please try again.",
+    "infoTitle": "Information",
+    "address": "Address",
+    "addressValue": "Ferhadija 1, 71000 Sarajevo",
+    "phoneLabel": "Phone",
+    "phoneValue": "+387 33 123 456",
+    "emailLabel": "Email",
+    "emailValue": "info@enamel.ba",
+    "hours": "Working hours",
+    "hoursValue": "Mon – Fri: 09:00 – 19:00, Sat: 09:00 – 14:00"
+  },
+  "testimonials": {
+    "title": "What our patients say",
+    "subtitle": "Your trust is our greatest reward",
+    "empty": "Reviews will be available soon."
+  },
+  "blog": {
+    "title": "Blog & education",
+    "subtitle": "Tips and news for your dental health",
+    "empty": "Articles will be available soon.",
+    "backToBlog": "Back to blog",
+    "published": "Published"
+  },
+  "footer": {
+    "tagline": "Premium dental care in Sarajevo.",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "hours": "Working hours"
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "emailInvalid": "Enter a valid email address",
+    "phoneRequired": "Phone number is required",
+    "messageRequired": "Message is required",
+    "slotTaken": "The selected slot is no longer available. Please choose another."
+  }
+}

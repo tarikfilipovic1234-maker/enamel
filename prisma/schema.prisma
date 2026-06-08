@@ -1,0 +1,160 @@
+// Enamel — Prisma schema (Neon Postgres)
+// Localized text is stored as JSON: { "bs": "...", "en": "..." } (see lib/i18n.ts Localized).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Connection URLs live in prisma.config.ts (Prisma 7). Runtime uses the
+  // Neon driver adapter (see lib/prisma.ts).
+}
+
+enum AppointmentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  RESCHEDULED
+  CANCELLED
+}
+
+enum InquiryStatus {
+  NEW
+  READ
+  RESPONDED
+}
+
+enum TestimonialStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Service {
+  id           String        @id @default(cuid())
+  slug         String        @unique
+  name         Json // Localized
+  description  Json // Localized
+  durationMin  Int           @default(30)
+  priceFrom    Int? // in BAM (KM), nullable = "on request"
+  category     String?
+  imageUrl     String?
+  order        Int           @default(0)
+  isActive     Boolean       @default(true)
+  appointments Appointment[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model StaffMember {
+  id           String         @id @default(cuid())
+  slug         String         @unique
+  name         String
+  title        Json // Localized (e.g. "Orthodontist")
+  bio          Json // Localized
+  photoUrl     String?
+  specialties  String[]       @default([])
+  order        Int            @default(0)
+  isActive     Boolean        @default(true)
+  workingHours WorkingHours[]
+  timeOff      TimeOff[]
+  appointments Appointment[]
+  posts        BlogPost[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model WorkingHours {
+  id        String      @id @default(cuid())
+  staff     StaffMember @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  staffId   String
+  dayOfWeek Int // 0 = Sunday ... 6 = Saturday
+  startMin  Int // minutes from midnight, e.g. 540 = 09:00
+  endMin    Int // e.g. 1020 = 17:00
+
+  @@unique([staffId, dayOfWeek])
+  @@index([staffId])
+}
+
+model TimeOff {
+  id      String      @id @default(cuid())
+  staff   StaffMember @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  staffId String
+  start   DateTime
+  end     DateTime
+  reason  String?
+
+  @@index([staffId, start])
+}
+
+model Appointment {
+  id           String            @id @default(cuid())
+  service      Service           @relation(fields: [serviceId], references: [id])
+  serviceId    String
+  staff        StaffMember?      @relation(fields: [staffId], references: [id])
+  staffId      String?
+  patientName  String
+  patientEmail String
+  patientPhone String
+  start        DateTime
+  end          DateTime
+  durationMin  Int
+  status       AppointmentStatus @default(PENDING)
+  notes        String?
+  locale       String            @default("bs")
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@index([staffId, start])
+  @@index([status])
+}
+
+model ContactInquiry {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    InquiryStatus @default(NEW)
+  locale    String        @default("bs")
+  createdAt DateTime      @default(now())
+
+  @@index([status])
+}
+
+model Testimonial {
+  id          String            @id @default(cuid())
+  patientName String
+  rating      Int               @default(5)
+  text        Json // Localized (author writes in one locale, stored under that key)
+  service     String?
+  status      TestimonialStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+
+  @@index([status])
+}
+
+model BlogPost {
+  id           String       @id @default(cuid())
+  slug         String       @unique
+  title        Json // Localized
+  excerpt      Json // Localized
+  body         Json // Localized (Markdown/MDX string per locale)
+  coverImage   String?
+  tags         String[]     @default([])
+  author       StaffMember? @relation(fields: [authorId], references: [id])
+  authorId     String?
+  status       PostStatus   @default(DRAFT)
+  publishedAt  DateTime?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([status, publishedAt])
+}
