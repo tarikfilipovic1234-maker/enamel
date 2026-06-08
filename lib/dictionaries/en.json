@@ -125,7 +125,17 @@
   "testimonials": {
     "title": "What our patients say",
     "subtitle": "Your trust is our greatest reward",
-    "empty": "Reviews will be available soon."
+    "empty": "Reviews will be available soon.",
+    "share": "Share your experience",
+    "formName": "Your name",
+    "formText": "Your review",
+    "formRating": "Rating",
+    "formService": "Service (optional)",
+    "formSubmit": "Submit review",
+    "formSubmitting": "Sending...",
+    "formSuccessTitle": "Thank you!",
+    "formSuccessText": "Your review has been submitted and is awaiting approval.",
+    "formError": "Submission failed. Please try again."
   },
   "blog": {
     "title": "Blog & education",

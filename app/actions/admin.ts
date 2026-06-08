@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { AppointmentStatus, InquiryStatus } from "@prisma/client";
+import { AppointmentStatus, InquiryStatus, PostStatus, TestimonialStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/dal";
 import { sendAppointmentStatusEmail } from "@/lib/email";
@@ -121,4 +121,142 @@ export async function deleteService(formData: FormData) {
     await prisma.service.update({ where: { id }, data: { isActive: false } });
   }
   revalidatePath("/admin/services");
+}
+
+const csv = (v: FormDataEntryValue | null) =>
+  String(v ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+/* ------------------------------------- Staff ----------------------------- */
+export async function upsertStaff(formData: FormData) {
+  await requireAdmin();
+  const id = formData.get("id") ? String(formData.get("id")) : null;
+  const data = {
+    slug: String(formData.get("slug")).trim(),
+    name: String(formData.get("name")).trim(),
+    title: localized(formData.get("titleBs"), formData.get("titleEn")),
+    bio: localized(formData.get("bioBs"), formData.get("bioEn")),
+    photoUrl: String(formData.get("photoUrl") ?? "") || null,
+    specialties: csv(formData.get("specialties")),
+    order: Number(formData.get("order")) || 0,
+    isActive: formData.get("isActive") === "on",
+  };
+  if (id) await prisma.staffMember.update({ where: { id }, data });
+  else await prisma.staffMember.create({ data });
+  revalidatePath("/admin/team");
+  revalidatePath("/[lang]/team", "page");
+  redirect("/admin/team");
+}
+
+export async function deleteStaff(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id"));
+  try {
+    await prisma.staffMember.delete({ where: { id } });
+  } catch {
+    await prisma.staffMember.update({ where: { id }, data: { isActive: false } });
+  }
+  revalidatePath("/admin/team");
+}
+
+/* Working hours: one row per weekday (0–6); blank start/end clears the day. */
+export async function saveWorkingHours(formData: FormData) {
+  await requireAdmin();
+  const staffId = String(formData.get("staffId"));
+  for (let day = 0; day < 7; day++) {
+    const start = formData.get(`start_${day}`);
+    const end = formData.get(`end_${day}`);
+    const startMin = start ? Number(start) : null;
+    const endMin = end ? Number(end) : null;
+    if (startMin != null && endMin != null && endMin > startMin) {
+      await prisma.workingHours.upsert({
+        where: { staffId_dayOfWeek: { staffId, dayOfWeek: day } },
+        update: { startMin, endMin },
+        create: { staffId, dayOfWeek: day, startMin, endMin },
+      });
+    } else {
+      await prisma.workingHours
+        .delete({ where: { staffId_dayOfWeek: { staffId, dayOfWeek: day } } })
+        .catch(() => {});
+    }
+  }
+  revalidatePath(`/admin/team/${staffId}`);
+}
+
+export async function addTimeOff(formData: FormData) {
+  await requireAdmin();
+  const staffId = String(formData.get("staffId"));
+  const start = new Date(String(formData.get("start")));
+  const end = new Date(String(formData.get("end")));
+  if (!Number.isNaN(start.getTime()) && !Number.isNaN(end.getTime()) && end > start) {
+    await prisma.timeOff.create({
+      data: { staffId, start, end, reason: String(formData.get("reason") ?? "") || null },
+    });
+  }
+  revalidatePath(`/admin/team/${staffId}`);
+}
+
+export async function deleteTimeOff(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id"));
+  const staffId = String(formData.get("staffId"));
+  await prisma.timeOff.delete({ where: { id } }).catch(() => {});
+  revalidatePath(`/admin/team/${staffId}`);
+}
+
+/* --------------------------------- Testimonials -------------------------- */
+export async function moderateTestimonial(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id"));
+  const status = String(formData.get("status")) as TestimonialStatus;
+  await prisma.testimonial.update({ where: { id }, data: { status } });
+  revalidatePath("/admin/testimonials");
+  revalidatePath("/[lang]/testimonials", "page");
+}
+
+export async function deleteTestimonial(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id"));
+  await prisma.testimonial.delete({ where: { id } }).catch(() => {});
+  revalidatePath("/admin/testimonials");
+}
+
+/* ------------------------------------- Blog ------------------------------ */
+export async function upsertPost(formData: FormData) {
+  await requireAdmin();
+  const id = formData.get("id") ? String(formData.get("id")) : null;
+  const status = String(formData.get("status")) as PostStatus;
+
+  const existing = id
+    ? await prisma.blogPost.findUnique({ where: { id }, select: { publishedAt: true } })
+    : null;
+
+  const data = {
+    slug: String(formData.get("slug")).trim(),
+    title: localized(formData.get("titleBs"), formData.get("titleEn")),
+    excerpt: localized(formData.get("excerptBs"), formData.get("excerptEn")),
+    body: localized(formData.get("bodyBs"), formData.get("bodyEn")),
+    coverImage: String(formData.get("coverImage") ?? "") || null,
+    tags: csv(formData.get("tags")),
+    authorId: String(formData.get("authorId") ?? "") || null,
+    status,
+    publishedAt:
+      status === PostStatus.PUBLISHED
+        ? (existing?.publishedAt ?? new Date())
+        : null,
+  };
+  if (id) await prisma.blogPost.update({ where: { id }, data });
+  else await prisma.blogPost.create({ data });
+  revalidatePath("/admin/blog");
+  revalidatePath("/[lang]/blog", "page");
+  redirect("/admin/blog");
+}
+
+export async function deletePost(formData: FormData) {
+  await requireAdmin();
+  const id = String(formData.get("id"));
+  await prisma.blogPost.delete({ where: { id } }).catch(() => {});
+  revalidatePath("/admin/blog");
 }

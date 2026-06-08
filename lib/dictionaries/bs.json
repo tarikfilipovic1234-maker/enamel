@@ -125,7 +125,17 @@
   "testimonials": {
     "title": "Šta kažu naši pacijenti",
     "subtitle": "Vaše povjerenje je naša najveća nagrada",
-    "empty": "Recenzije će uskoro biti dostupne."
+    "empty": "Recenzije će uskoro biti dostupne.",
+    "share": "Podijelite svoje iskustvo",
+    "formName": "Vaše ime",
+    "formText": "Vaša recenzija",
+    "formRating": "Ocjena",
+    "formService": "Usluga (opcionalno)",
+    "formSubmit": "Pošalji recenziju",
+    "formSubmitting": "Slanje...",
+    "formSuccessTitle": "Hvala!",
+    "formSuccessText": "Vaša recenzija je poslana i čeka odobrenje.",
+    "formError": "Slanje nije uspjelo. Pokušajte ponovo."
   },
   "blog": {
     "title": "Blog i edukacija",
