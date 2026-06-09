@@ -87,15 +87,29 @@ const services = [
 
 const staff = [
   {
+    slug: "dr-adna-koso",
+    name: "Dr. Adna Koso",
+    title: {
+      bs: "Vodeća doktorica, maksilofacijalna hirurgija",
+      en: "Lead Doctor, Maxillofacial Surgery",
+    },
+    bio: {
+      bs: "Vodeća doktorica poliklinike Enamel i specijalista maksilofacijalne hirurgije. Spaja vrhunsku hiruršku ekspertizu s nježnim pristupom svakom pacijentu.",
+      en: "Lead doctor at Enamel and a specialist in maxillofacial surgery, combining top-tier surgical expertise with a gentle approach to every patient.",
+    },
+    specialties: ["Maksilofacijalna hirurgija", "Oralna hirurgija", "Implantologija"],
+    order: 1,
+  },
+  {
     slug: "dr-amina-hadzic",
     name: "Dr. Amina Hadžić",
     title: { bs: "Doktorica dentalne medicine, osnivačica", en: "Doctor of Dental Medicine, Founder" },
     bio: {
-      bs: "Sa preko 15 godina iskustva, dr. Hadžić predvodi tim Enamela s posvećenošću estetskoj i restaurativnoj stomatologiji.",
-      en: "With over 15 years of experience, Dr. Hadžić leads the Enamel team with a dedication to aesthetic and restorative dentistry.",
+      bs: "Sa preko 15 godina iskustva, dr. Hadžić je posvećena estetskoj i restaurativnoj stomatologiji.",
+      en: "With over 15 years of experience, Dr. Hadžić is dedicated to aesthetic and restorative dentistry.",
     },
     specialties: ["Estetska stomatologija", "Implantologija"],
-    order: 1,
+    order: 2,
   },
   {
     slug: "dr-tarik-begovic",
@@ -106,7 +120,7 @@ const staff = [
       en: "An expert in teeth alignment and clear aligners, devoted to perfect, functional smiles.",
     },
     specialties: ["Ortodoncija", "Aligneri"],
-    order: 2,
+    order: 3,
   },
   {
     slug: "dr-lejla-kovac",
@@ -117,7 +131,7 @@ const staff = [
       en: "Warm and patient, specialized in pediatric and preventive dentistry.",
     },
     specialties: ["Dječija stomatologija", "Prevencija"],
-    order: 3,
+    order: 4,
   },
 ];
 

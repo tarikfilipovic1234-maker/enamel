@@ -56,6 +56,19 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
           <ContactForm lang={lang as Locale} dict={dict} />
         </Reveal>
       </div>
+
+      <Reveal delay={0.1}>
+        <div className="glass mt-12 overflow-hidden rounded-[var(--radius-card)] p-1.5">
+          <iframe
+            title={dict.contact.addressValue}
+            src="https://www.google.com/maps?q=Ferhadija%201%2C%20Sarajevo%2C%20Bosnia%20and%20Herzegovina&z=16&output=embed"
+            className="h-[420px] w-full rounded-[1.2rem] border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+      </Reveal>
     </div>
   );
 }
