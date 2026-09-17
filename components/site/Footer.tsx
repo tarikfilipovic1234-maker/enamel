@@ -111,6 +111,10 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               {clinic.country[lang]}
             </p>
           </div>
+
+          <div className="mx-auto max-w-6xl px-6 pb-6">
+            <p className="text-xs leading-relaxed text-white/40">{dict.footer.demoNote}</p>
+          </div>
         </div>
       </div>
     </footer>
