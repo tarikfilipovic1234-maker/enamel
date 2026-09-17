@@ -7,7 +7,9 @@
     "testimonials": "Reviews",
     "blog": "Blog",
     "contact": "Contact",
-    "book": "Book appointment"
+    "book": "Book appointment",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use"
   },
   "common": {
     "bookNow": "Book appointment",
@@ -21,45 +23,38 @@
     "minutes": "min",
     "required": "required"
   },
-  "splash": {
-    "tagline": "Your smile, our passion"
-  },
   "home": {
-    "heroBadge": "Dental clinic in Sarajevo",
-    "heroTitle": "Premium dentistry for a perfect smile",
-    "heroSubtitle": "A blend of modern technology, expertise and warmth. We care for your smile at the highest level.",
+    "heroTitle": "Dental care and oral surgery in Sarajevo",
+    "heroSubtitle": "From routine check-ups and cleaning to implants, orthodontics and pediatric dentistry. Send an appointment request online and we'll confirm it by phone or email.",
     "heroCtaPrimary": "Book appointment",
     "heroCtaSecondary": "Our services",
-    "statsPatients": "Happy patients",
-    "statsExperience": "Years of experience",
-    "statsServices": "Dental services",
     "servicesTitle": "Our services",
     "servicesSubtitle": "Complete dental care in one place",
     "whyTitle": "Why Enamel",
-    "whySubtitle": "Dedicated to your comfortable and pain-free experience",
+    "whySubtitle": "How we work and what to expect",
     "why1Title": "Modern technology",
-    "why1Text": "State-of-the-art equipment for precise, pain-free treatments.",
-    "why2Title": "Experienced experts",
-    "why2Text": "A team of certified dentists with years of practice.",
+    "why1Text": "Modern equipment for precise diagnostics and treatment.",
+    "why2Title": "Specialist care",
+    "why2Text": "Oral surgery, implantology, orthodontics and pediatric dentistry in one place.",
     "why3Title": "Personal approach",
     "why3Text": "Every treatment plan is tailored just for you.",
     "why4Title": "Comfortable atmosphere",
-    "why4Text": "A relaxing ambiance that takes the fear out of the dentist.",
-    "ctaTitle": "Ready for a new smile?",
-    "ctaText": "Book your free consultation today.",
+    "why4Text": "A comfortable space and a careful approach for patients of every age.",
+    "ctaTitle": "Book an examination",
+    "ctaText": "Send an appointment request and we'll get back to you to confirm.",
     "teamTitle": "Meet our team",
-    "teamSubtitle": "Experts you can trust"
+    "teamSubtitle": "The doctors and staff at Enamel"
   },
   "about": {
     "title": "About Enamel clinic",
     "subtitle": "Dedicated to the health and beauty of your smile",
-    "intro": "Enamel is a modern dental clinic in the heart of Sarajevo, founded to deliver premium dental care in a comfortable and safe environment.",
+    "intro": "Enamel is a dental clinic in Sarajevo, founded to deliver modern dental care in a comfortable and safe environment.",
     "missionTitle": "Our mission",
-    "missionText": "We believe everyone deserves a healthy, confident smile. We combine cutting-edge technology with a careful, individual approach to every patient.",
+    "missionText": "We believe everyone deserves a healthy, confident smile. We combine modern technology with a careful, individual approach to every patient.",
     "valuesTitle": "Our values",
     "value1": "Trust and transparency",
     "value2": "Continuous improvement",
-    "value3": "Pain-free treatments",
+    "value3": "Attention to patient comfort",
     "value4": "Highest hygiene standards"
   },
   "services": {
@@ -73,7 +68,7 @@
   },
   "team": {
     "title": "Our team",
-    "subtitle": "Experienced dentists dedicated to your smile",
+    "subtitle": "Profiles of our doctors",
     "specialties": "Specialties",
     "empty": "Team profiles will be available soon."
   },
@@ -97,7 +92,8 @@
     "submitting": "Sending request...",
     "successTitle": "Request sent!",
     "successText": "Your appointment request has been received. We will contact you to confirm.",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "slotRequired": "Choose a date and time to send your request."
   },
   "contact": {
     "title": "Contact us",
@@ -114,17 +110,13 @@
     "errorGeneric": "Sending failed. Please try again.",
     "infoTitle": "Information",
     "address": "Address",
-    "addressValue": "Ferhadija 1, 71000 Sarajevo",
     "phoneLabel": "Phone",
-    "phoneValue": "+387 33 123 456",
     "emailLabel": "Email",
-    "emailValue": "info@enamel.ba",
-    "hours": "Working hours",
-    "hoursValue": "Mon – Fri: 09:00 – 19:00, Sat: 09:00 – 14:00"
+    "hours": "Working hours"
   },
   "testimonials": {
     "title": "What our patients say",
-    "subtitle": "Your trust is our greatest reward",
+    "subtitle": "Patient reviews, published after we verify them.",
     "empty": "Reviews will be available soon.",
     "share": "Share your experience",
     "formName": "Your name",
@@ -145,11 +137,12 @@
     "published": "Published"
   },
   "footer": {
-    "tagline": "Premium dental care in Sarajevo.",
+    "tagline": "Dental care and oral surgery in Sarajevo.",
     "quickLinks": "Quick links",
     "contact": "Contact",
     "rights": "All rights reserved.",
-    "hours": "Working hours"
+    "hours": "Working hours",
+    "legal": "Legal"
   },
   "validation": {
     "nameRequired": "Name is required",
@@ -157,5 +150,49 @@
     "phoneRequired": "Phone number is required",
     "messageRequired": "Message is required",
     "slotTaken": "The selected slot is no longer available. Please choose another."
+  },
+  "legal": {
+    "privacyTitle": "Privacy policy",
+    "privacySubtitle": "What this site collects and what we do with it.",
+    "termsTitle": "Terms of use",
+    "termsSubtitle": "The rules for using this website and the online appointment request.",
+    "lastUpdated": "Last updated",
+    "controllerTitle": "Who processes your data",
+    "controllerPending": "The registered company details will be published before the site goes live.",
+    "dataTitle": "What we collect",
+    "dataIntro": "We collect only what you type into one of the forms on this site. We use no analytics, no advertising cookies and no visitor tracking.",
+    "dataContact": "Contact form: name, email address, phone number (optional), subject and message.",
+    "dataAppointment": "Appointment request: name, email address, phone number, the service, dentist and time you selected, and a note if you add one.",
+    "dataTestimonial": "Review: the name you give, a rating, the review text and a service name if you add one.",
+    "dataNote": "The note field on the appointment request is free text. Please do not put detailed health information in it; we will discuss that in person or by phone.",
+    "purposeTitle": "Why we use it",
+    "purposeText": "Only to answer your enquiry, to confirm or move an appointment, and to publish a review after we have checked it. We do not sell your data or use it for marketing without your consent.",
+    "storageTitle": "Where it is kept",
+    "storageText": "Submissions are stored in a database (Neon, PostgreSQL) and sent as email through Resend. The site is hosted on Vercel. These providers process the data on our behalf.",
+    "retentionTitle": "How long",
+    "retentionText": "We keep enquiries and appointment requests for as long as we need them to correspond with you and to keep a record of appointments. A published review stays visible until you ask us to remove it.",
+    "cookiesTitle": "Cookies",
+    "cookiesText": "The public part of this site sets no cookies and stores nothing in your browser. Cookies are used only to sign staff in to the admin area.",
+    "mapTitle": "Google map",
+    "mapText": "The contact page embeds a location map from Google Maps. Loading it connects your browser to Google servers, which is covered by their privacy policy.",
+    "rightsTitle": "Your rights",
+    "rightsText": "You can ask what we hold about you, ask us to correct or delete it, and withdraw a review. Get in touch using the details on the contact page.",
+    "termsUseTitle": "Using this site",
+    "termsUseText": "The content here is for information. Service descriptions and blog articles are not medical advice and do not replace an examination by a dentist.",
+    "termsBookingTitle": "A request is not a confirmed appointment",
+    "termsBookingText": "The booking form sends a request. The time is reserved only once we confirm it by phone or email. If you cannot make it, please let us know in advance.",
+    "termsPricesTitle": "Prices and duration",
+    "termsPricesText": "Any durations and prices shown are indicative and apply to a standard treatment. The final price is set after an examination and treatment plan.",
+    "termsReviewsTitle": "Reviews",
+    "termsReviewsText": "We publish reviews only after checking them. We may decline to publish content that is abusive, untrue, or contains personal details of other people.",
+    "termsContentTitle": "Copyright",
+    "termsContentText": "The text, photographs and visual identity on this site belong to Enamel unless stated otherwise.",
+    "termsChangesTitle": "Changes",
+    "termsChangesText": "We may update these terms from time to time. The date of the last change is shown at the top of this page."
+  },
+  "meta": {
+    "siteTitle": "Enamel · Dental clinic in Sarajevo",
+    "titleTemplate": "%s · Enamel",
+    "description": "Enamel dental clinic in Sarajevo: check-ups, prevention, implants, orthodontics, oral surgery and pediatric dentistry. Send an appointment request online."
   }
 }

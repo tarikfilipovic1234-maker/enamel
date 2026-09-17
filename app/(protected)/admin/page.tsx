@@ -26,7 +26,7 @@ async function loadStats() {
 export default async function AdminDashboard() {
   const s = await loadStats();
   const cards = [
-    { label: "Pending requests", value: s.pending, href: "/admin/appointments", accent: "text-accent-600" },
+    { label: "Pending requests", value: s.pending, href: "/admin/appointments", accent: "text-amber-600" },
     { label: "Total appointments", value: s.totalAppts, href: "/admin/appointments", accent: "text-teal-700" },
     { label: "New inquiries", value: s.newInquiries, href: "/admin/inquiries", accent: "text-sardinia-600" },
     { label: "Active services", value: s.activeServices, href: "/admin/services", accent: "text-slate-700" },

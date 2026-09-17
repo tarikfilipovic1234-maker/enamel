@@ -1,6 +1,6 @@
-# Enamel — Dental Clinic (Sarajevo)
+# Enamel - Dental Clinic (Sarajevo)
 
-Premium, bilingual (🇧🇦 Bosnian / 🇬🇧 English) full-stack website for the Enamel dental clinic: marketing site, online appointment requests, and a secure staff admin dashboard.
+Bilingual (Bosnian / English) full-stack website for the Enamel dental clinic: marketing site, online appointment requests, and a secure staff admin dashboard.
 
 ## Stack
 
@@ -13,12 +13,13 @@ Premium, bilingual (🇧🇦 Bosnian / 🇬🇧 English) full-stack website for 
 
 ## Features
 
-- Splash animation, aurora/glass design system, directional + shared-element page transitions
+- Design system in `app/globals.css`: solid surfaces, one card radius, no gradients or blur
+- Directional page transitions and a shared-element transition on service names
 - Bilingual routing under `/[lang]` (`bs` default) with server-only dictionaries
-- Pages: Home, About, Services (+ detail), Team, Appointment booking, Contact, Testimonials, Blog
+- Pages: Home, About, Services (+ detail), Team, Appointment booking, Contact, Testimonials, Blog, Privacy policy, Terms of use
 - Appointment system: availability engine (working hours − time off − approved bookings), Zod validation, transactional overlap guard, email confirmations
 - Admin: appointments (approve/reject/reschedule), services CRUD, dentists + working-hours/time-off, testimonial moderation, blog CMS, contact inquiries
-- SEO: localized `sitemap.xml`, `robots.txt`, Dentist JSON-LD, OpenGraph
+- SEO: per-locale metadata with canonical + hreflang, localized `sitemap.xml`, `robots.txt`, Dentist JSON-LD, generated OpenGraph image
 
 ## Getting started
 
@@ -65,6 +66,17 @@ Premium, bilingual (🇧🇦 Bosnian / 🇬🇧 English) full-stack website for 
 
 ## Notes
 
-- Connection URLs live in `prisma.config.ts` (Prisma 7); the runtime client uses the Neon WebSocket adapter in `lib/prisma.ts`.
+- **`lib/clinic.ts` holds the clinic's real-world details** (address, phone, email, opening
+  hours, registered company name) and ships empty. Every surface that displays them - contact
+  page, footer, Dentist structured data, the Google Maps embed, the legal pages - checks for a
+  value first and omits the row when it is blank, so the site never publishes a guessed address
+  or an unreachable number. Fill this in before launch.
+- Set `NEXT_PUBLIC_SITE_URL` to the production domain; canonical URLs, hreflang, the sitemap and
+  the OpenGraph image all derive from it.
+- Prices and staff profiles are managed in the admin dashboard. The seed ships only the services
+  themselves (with no prices, so they show as "on request") and the one confirmed doctor.
+- Connection URLs live in `prisma.config.ts` (Prisma 7); the runtime client uses the Neon
+  WebSocket adapter in `lib/prisma.ts`. Note that `prisma generate` (and therefore
+  `npm install`) fails unless `DIRECT_URL` is set.
 - Public pages degrade gracefully (empty states) when the DB is unreachable.
 - `AGENTS.md` directs AI agents to the version-matched Next.js docs in `node_modules/next/dist/docs/`.

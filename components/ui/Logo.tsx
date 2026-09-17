@@ -14,10 +14,10 @@ export function Logo({
   return (
     <Link
       href={`/${lang}`}
-      className={`group inline-flex items-center gap-2.5 ${className}`}
+      className={`inline-flex items-center gap-2.5 ${className}`}
       aria-label="Enamel"
     >
-      <span className="relative grid h-9 w-9 place-items-center rounded-xl bg-brand-gradient shadow-[var(--shadow-glow)] transition-transform duration-300 group-hover:scale-105">
+      <span className="grid h-9 w-9 place-items-center rounded-md bg-teal-700">
         <svg
           viewBox="0 0 24 24"
           className="h-5 w-5 text-white"
@@ -33,7 +33,7 @@ export function Logo({
         </svg>
       </span>
       <span
-        className={`font-display text-2xl font-semibold tracking-tight ${
+        className={`font-display text-xl font-semibold tracking-tight ${
           invert ? "text-white" : "text-ink"
         }`}
       >

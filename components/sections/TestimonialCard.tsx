@@ -15,8 +15,8 @@ export function TestimonialCard({
   lang: Locale;
 }) {
   return (
-    <figure className="glass flex h-full flex-col rounded-[var(--radius-card)] p-7">
-      <div className="flex gap-0.5 text-accent-500" aria-label={`${testimonial.rating}/5`}>
+    <figure className="surface flex h-full flex-col rounded-[var(--radius-card)] p-7">
+      <div className="flex gap-0.5 text-amber-500" aria-label={`${testimonial.rating}/5`}>
         {Array.from({ length: 5 }).map((_, i) => (
           <svg
             key={i}
@@ -33,7 +33,7 @@ export function TestimonialCard({
       <blockquote className="mt-4 flex-1 text-ink/75">
         “{t(testimonial.text, lang)}”
       </blockquote>
-      <figcaption className="mt-5 border-t border-teal-900/10 pt-4">
+      <figcaption className="mt-5 border-t border-ink/10 pt-4">
         <span className="font-semibold text-ink">{testimonial.patientName}</span>
         {testimonial.service && (
           <span className="block text-sm text-ink/50">{testimonial.service}</span>

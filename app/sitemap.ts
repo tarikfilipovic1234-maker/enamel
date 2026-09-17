@@ -3,14 +3,29 @@ import { locales } from "@/lib/i18n";
 import { prisma } from "@/lib/prisma";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const staticPaths = ["", "/about", "/services", "/team", "/testimonials", "/blog", "/contact", "/appointment"];
+const staticPaths = [
+  "",
+  "/about",
+  "/services",
+  "/team",
+  "/testimonials",
+  "/blog",
+  "/contact",
+  "/appointment",
+  "/privacy",
+  "/terms",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const lang of locales) {
     for (const path of staticPaths) {
-      entries.push({ url: `${base}/${lang}${path}`, changeFrequency: "monthly", priority: path === "" ? 1 : 0.7 });
+      entries.push({
+        url: `${base}/${lang}${path}`,
+        changeFrequency: "monthly",
+        priority: path === "" ? 1 : path === "/privacy" || path === "/terms" ? 0.3 : 0.7,
+      });
     }
   }
 

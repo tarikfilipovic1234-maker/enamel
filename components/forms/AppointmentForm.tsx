@@ -41,12 +41,19 @@ export function AppointmentForm({
 
   const [state, action, pending] = useActionState(createAppointment, undefined);
 
-  useEffect(() => {
+  // Changing service, dentist or date invalidates the currently listed slots.
+  // Clearing them during render (rather than in the effect) keeps the form from
+  // briefly showing times that belong to the previous selection.
+  const selection = `${serviceId}|${staffId}|${date}`;
+  const [lastSelection, setLastSelection] = useState(selection);
+  if (selection !== lastSelection) {
+    setLastSelection(selection);
     setSlot("");
-    if (!serviceId || !date) {
-      setSlots([]);
-      return;
-    }
+    setSlots([]);
+  }
+
+  useEffect(() => {
+    if (!serviceId || !date) return;
     startSlots(async () => {
       const result = await fetchSlots(serviceId, staffId || null, date);
       setSlots(result);
@@ -70,9 +77,9 @@ export function AppointmentForm({
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass flex flex-col items-center rounded-[var(--radius-card)] p-12 text-center"
+        className="surface flex flex-col items-center rounded-[var(--radius-card)] p-12 text-center"
       >
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-brand-gradient text-white">
+        <span className="grid h-16 w-16 place-items-center rounded-full bg-teal-700 text-white">
           <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m5 12 4 4L19 6" />
           </svg>
@@ -84,7 +91,7 @@ export function AppointmentForm({
   }
 
   return (
-    <form action={action} className="glass rounded-[var(--radius-card)] p-7 sm:p-9">
+    <form action={action} className="surface rounded-[var(--radius-card)] p-7 sm:p-9">
       <input type="hidden" name="locale" value={lang} />
       <input type="hidden" name="serviceId" value={serviceId} />
       <input type="hidden" name="staffId" value={staffId} />
@@ -149,8 +156,8 @@ export function AppointmentForm({
                   onClick={() => setSlot(s.iso)}
                   className={`rounded-xl border px-2 py-2.5 text-sm font-medium transition-all ${
                     slot === s.iso
-                      ? "border-transparent bg-brand-gradient text-white shadow-[var(--shadow-glow)]"
-                      : "border-teal-900/10 bg-white/60 text-ink/80 hover:border-teal-500/40"
+                      ? "border-transparent bg-teal-700 text-white"
+                      : "border-ink/10 bg-white/60 text-ink/80 hover:border-teal-500/40"
                   }`}
                 >
                   {s.label}
@@ -164,7 +171,7 @@ export function AppointmentForm({
       )}
 
       {/* Patient details */}
-      <div className="mt-6 grid gap-5 border-t border-teal-900/10 pt-6 sm:grid-cols-2">
+      <div className="mt-6 grid gap-5 border-t border-ink/10 pt-6 sm:grid-cols-2">
         <div>
           <Label htmlFor="patientName">{dict.appointment.name}</Label>
           <Input id="patientName" name="patientName" required minLength={2} autoComplete="name" />
@@ -174,11 +181,9 @@ export function AppointmentForm({
           <Input id="patientEmail" name="patientEmail" type="email" required autoComplete="email" />
         </div>
       </div>
-      <div className="mt-5 grid gap-5 sm:grid-cols-2">
-        <div>
-          <Label htmlFor="patientPhone">{dict.appointment.phone}</Label>
-          <Input id="patientPhone" name="patientPhone" required minLength={6} autoComplete="tel" />
-        </div>
+      <div className="mt-5">
+        <Label htmlFor="patientPhone">{dict.appointment.phone}</Label>
+        <Input id="patientPhone" name="patientPhone" required minLength={6} autoComplete="tel" />
       </div>
       <div className="mt-5">
         <Label htmlFor="notes">{dict.appointment.notes}</Label>
@@ -186,7 +191,7 @@ export function AppointmentForm({
       </div>
 
       {state && !state.ok && (
-        <p className="mt-4 text-sm text-accent-600">
+        <p className="mt-4 text-sm text-red-700">
           {state.error === "slot" ? dict.validation.slotTaken : dict.appointment.errorGeneric}
         </p>
       )}
@@ -194,6 +199,9 @@ export function AppointmentForm({
       <Button type="submit" size="lg" disabled={pending || !slot} className="mt-6 w-full">
         {pending ? dict.appointment.submitting : dict.appointment.submit}
       </Button>
+      {!slot && (
+        <p className="mt-2 text-center text-sm text-ink/50">{dict.appointment.slotRequired}</p>
+      )}
     </form>
   );
 }

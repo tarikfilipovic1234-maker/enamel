@@ -7,7 +7,6 @@ import { formatPrice } from "@/lib/format";
 import { getServiceBySlug } from "@/lib/data";
 import { LinkButton } from "@/components/ui/Button";
 import { ViewTransition } from "@/components/ui/ViewTransition";
-import { Reveal } from "@/components/motion/Reveal";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/services/[slug]">): Promise<Metadata> {
   const { lang, slug } = await params;
@@ -40,42 +39,33 @@ export default async function ServiceDetailPage({ params }: PageProps<"/[lang]/s
         {dict.nav.services}
       </Link>
 
-      <div className="mt-8 flex items-start gap-5">
-        <ViewTransition name={`service-${service.slug}`}>
-          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-brand-gradient text-white shadow-[var(--shadow-glow)]">
-            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 3c3.5 0 6 2.4 6 6 0 3.2-1.2 5-2 8-.5 1.9-1.2 4-4 4s-3.5-2.1-4-4c-.8-3-2-4.8-2-8 0-3.6 2.5-6 6-6Z" />
-            </svg>
+      <div className="mt-8">
+        {service.category && (
+          <span className="text-xs font-semibold uppercase tracking-[0.12em] text-teal-700">
+            {service.category}
           </span>
-        </ViewTransition>
-        <div>
-          {service.category && (
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
-              {service.category}
-            </span>
-          )}
-          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        )}
+        <ViewTransition name={`service-${service.slug}`}>
+          <h1 className="mt-2 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             {t(service.name, lang as Locale)}
           </h1>
-        </div>
+        </ViewTransition>
       </div>
 
-      <Reveal delay={0.05}>
-        <p className="mt-8 text-lg leading-relaxed text-ink/70">
-          {t(service.description, lang as Locale)}
-        </p>
-      </Reveal>
+      <p className="mt-8 text-lg leading-relaxed text-ink/70">
+        {t(service.description, lang as Locale)}
+      </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        <div className="glass rounded-2xl p-6">
+        <div className="surface rounded-[var(--radius-card)] p-5">
           <div className="text-sm text-ink/50">{dict.services.detailDuration}</div>
           <div className="mt-1 font-display text-2xl font-semibold text-ink">
             {service.durationMin} {dict.common.minutes}
           </div>
         </div>
-        <div className="glass rounded-2xl p-6">
+        <div className="surface rounded-[var(--radius-card)] p-5">
           <div className="text-sm text-ink/50">{dict.services.detailPrice}</div>
-          <div className="mt-1 font-display text-2xl font-semibold text-teal-700">
+          <div className="mt-1 font-display text-2xl font-semibold text-ink">
             {price ? `${dict.common.from} ${price}` : dict.services.priceOnRequest}
           </div>
         </div>

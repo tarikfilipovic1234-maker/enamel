@@ -7,7 +7,6 @@ import { t, type Locale } from "@/lib/i18n";
 import { formatDate } from "@/lib/format";
 import { getPostBySlug } from "@/lib/data";
 import { Prose } from "@/components/ui/Prose";
-import { Reveal } from "@/components/motion/Reveal";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug]">): Promise<Metadata> {
   const { lang, slug } = await params;
@@ -39,35 +38,29 @@ export default async function BlogPostPage({ params }: PageProps<"/[lang]/blog/[
         {dict.blog.backToBlog}
       </Link>
 
-      <Reveal>
-        <div className="mt-6">
-          {post.publishedAt && (
-            <time className="text-sm text-ink/40">
-              {dict.blog.published} · {formatDate(post.publishedAt, lang as Locale)}
-            </time>
-          )}
-          <h1 className="mt-2 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
-            {t(post.title, lang as Locale)}
-          </h1>
-          {post.author && (
-            <p className="mt-3 text-sm text-ink/50">{post.author.name}</p>
-          )}
-        </div>
-      </Reveal>
+      <div className="mt-6">
+        {post.publishedAt && (
+          <time className="text-sm text-ink/40">
+            {dict.blog.published} · {formatDate(post.publishedAt, lang as Locale)}
+          </time>
+        )}
+        <h1 className="mt-2 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">
+          {t(post.title, lang as Locale)}
+        </h1>
+        {post.author && (
+          <p className="mt-3 text-sm text-ink/50">{post.author.name}</p>
+        )}
+      </div>
 
       {post.coverImage && (
-        <Reveal delay={0.05}>
-          <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-[var(--radius-card)]">
-            <Image src={post.coverImage} alt={t(post.title, lang as Locale)} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" />
-          </div>
-        </Reveal>
+        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-[var(--radius-card)]">
+          <Image src={post.coverImage} alt={t(post.title, lang as Locale)} fill className="object-cover" sizes="(max-width: 768px) 100vw, 768px" />
+        </div>
       )}
 
-      <Reveal delay={0.1}>
-        <div className="mt-10">
-          <Prose>{t(post.body, lang as Locale)}</Prose>
-        </div>
-      </Reveal>
+      <div className="mt-10">
+        <Prose>{t(post.body, lang as Locale)}</Prose>
+      </div>
     </article>
   );
 }

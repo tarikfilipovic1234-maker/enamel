@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 
 const fieldClass =
-  "w-full rounded-2xl border border-teal-900/10 bg-white/70 px-4 py-3 text-ink shadow-sm outline-none transition-all placeholder:text-ink/30 focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/30";
+  "w-full rounded-md border border-ink/20 bg-white px-3.5 py-2.5 text-ink transition-colors placeholder:text-ink/35 hover:border-ink/30 focus:border-teal-700";
 
 export function Label({
   children,

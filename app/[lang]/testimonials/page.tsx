@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
+import { cardGrid } from "@/lib/layout";
 import type { Locale } from "@/lib/i18n";
 import { getApprovedTestimonials } from "@/lib/data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/motion/Reveal";
 import { TestimonialCard } from "@/components/sections/TestimonialCard";
 import { TestimonialForm } from "@/components/forms/TestimonialForm";
 
@@ -20,14 +20,12 @@ export default async function TestimonialsPage({ params }: PageProps<"/[lang]/te
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
-      <SectionHeading eyebrow={dict.nav.testimonials} title={dict.testimonials.title} subtitle={dict.testimonials.subtitle} />
+      <SectionHeading eyebrow={dict.nav.testimonials} title={dict.testimonials.title} subtitle={dict.testimonials.subtitle} as="h1" />
 
       {testimonials.length > 0 ? (
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((tm, i) => (
-            <Reveal key={tm.id} delay={(i % 3) * 0.07}>
-              <TestimonialCard testimonial={tm} lang={lang as Locale} />
-            </Reveal>
+        <div className={`mt-12 grid gap-6 ${cardGrid(testimonials.length)}`}>
+          {testimonials.map((tm) => (
+            <TestimonialCard key={tm.id} testimonial={tm} lang={lang as Locale} />
           ))}
         </div>
       ) : (
@@ -36,11 +34,9 @@ export default async function TestimonialsPage({ params }: PageProps<"/[lang]/te
 
       <div className="mx-auto mt-24 max-w-2xl">
         <SectionHeading title={dict.testimonials.share} />
-        <Reveal delay={0.05}>
-          <div className="mt-8">
-            <TestimonialForm lang={lang as Locale} dict={dict} />
-          </div>
-        </Reveal>
+        <div className="mt-8">
+          <TestimonialForm lang={lang as Locale} dict={dict} />
+        </div>
       </div>
     </div>
   );

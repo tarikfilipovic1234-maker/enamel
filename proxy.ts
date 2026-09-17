@@ -33,8 +33,10 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Run on public paths only — exclude admin, the Stack handler, API, assets.
+  // Run on public paths only. Excludes admin, the Stack handler, API, assets and
+  // the extensionless metadata routes (icon, apple-icon), which would otherwise
+  // be redirected into a locale and never served.
   matcher: [
-    "/((?!api|admin|handler|_next/static|_next/image|favicon.ico|.*\\..*).*)",
+    "/((?!api|admin|handler|_next/static|_next/image|icon|apple-icon|opengraph-image|twitter-image|manifest|favicon.ico|.*\\..*).*)",
   ],
 };
