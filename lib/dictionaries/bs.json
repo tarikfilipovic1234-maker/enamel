@@ -137,12 +137,7 @@
     "published": "Objavljeno"
   },
   "footer": {
-    "tagline": "Stomatološka njega i oralna hirurgija u Sarajevu.",
-    "quickLinks": "Brzi linkovi",
-    "contact": "Kontakt",
-    "rights": "Sva prava zadržana.",
-    "hours": "Radno vrijeme",
-    "legal": "Pravno"
+    "demoNote": "Demo projekt. Enamel je izmišljena ordinacija; osoblje i kontakt podaci su ilustrativni."
   },
   "validation": {
     "nameRequired": "Ime je obavezno",

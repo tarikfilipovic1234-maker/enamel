@@ -137,12 +137,7 @@
     "published": "Published"
   },
   "footer": {
-    "tagline": "Dental care and oral surgery in Sarajevo.",
-    "quickLinks": "Quick links",
-    "contact": "Contact",
-    "rights": "All rights reserved.",
-    "hours": "Working hours",
-    "legal": "Legal"
+    "demoNote": "Demo project. Enamel is a fictional clinic; staff and contact details are placeholders."
   },
   "validation": {
     "nameRequired": "Name is required",
