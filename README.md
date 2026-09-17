@@ -1,4 +1,5 @@
 # Enamel - Dental Clinic (Sarajevo)
+Portfolio project. Enamel is a fictional clinic built to exercise a real booking flow; the staff, services and contact details are placeholders.
 
 Bilingual (Bosnian / English) full-stack website for the Enamel dental clinic: marketing site, online appointment requests, and a secure staff admin dashboard.
 
