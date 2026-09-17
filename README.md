@@ -68,7 +68,7 @@ Bilingual (Bosnian / English) full-stack website for the Enamel dental clinic: m
 
 ## Notes
 
-- **`lib/clinic.ts` holds the the clinic's contact details** (address, phone, email, opening
+- **`lib/clinic.ts` holds the clinic's contact details** (address, phone, email, opening
   hours, registered company name) and ships empty. Every surface that displays them - contact
   page, footer, Dentist structured data, the Google Maps embed, the legal pages - checks for a
   value first and omits the row when it is blank, so the site never publishes a guessed address
@@ -76,7 +76,7 @@ Bilingual (Bosnian / English) full-stack website for the Enamel dental clinic: m
 - Set `NEXT_PUBLIC_SITE_URL` to the production domain; canonical URLs, hreflang, the sitemap and
   the OpenGraph image all derive from it.
 - Prices and staff profiles are managed in the admin dashboard. The seed ships only the services
-themselves (with no prices, so they show as "on request") and "a single example dentist.
+themselves (with no prices, so they show as "on request") and a single example dentist.
 - Connection URLs live in `prisma.config.ts` (Prisma 7); the runtime client uses the Neon
   WebSocket adapter in `lib/prisma.ts`. Note that `prisma generate` (and therefore
   `npm install`) fails unless `DIRECT_URL` is set.
